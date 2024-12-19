@@ -9,6 +9,17 @@ toggleTheme.addEventListener('click', () => {
   isDarkMode = !isDarkMode;
 });
 
+// Clear
+function clearAllMessages() {
+  if (confirm("Are you sure you want to clear all messages? This action cannot be undone.")) {
+    // Clear messages from localStorage
+    localStorage.removeItem('feedback');
+    // Update the feedback container to show "No feedback available"
+    document.getElementById('feedback-container').innerHTML = "<p>No feedback available.</p>";
+    alert("All messages have been cleared!");
+  }
+}
+
 // Particle Background Animation
 const canvas = document.getElementById('background');
 const ctx = canvas.getContext('2d');
