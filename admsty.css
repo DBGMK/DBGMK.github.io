@@ -1,19 +1,49 @@
-/* General Styles */
+/* General Admin Styles */
 body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f0f0f0;
+  background-color: #f8f9fa;
   color: #333;
 }
 
-h1, h2 {
+header {
+  background-color: #0056b3;
+  color: white;
+  padding: 20px;
   text-align: center;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #0056b3;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+main {
+  padding: 20px;
+}
+
+section {
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 80%;
+}
+
+section h3 {
+  margin-bottom: 15px;
 }
 
 button {
   padding: 10px 20px;
-  background-color: #007BFF;
+  background-color: #0056b3;
   color: white;
   border: none;
   cursor: pointer;
@@ -23,38 +53,71 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #003d80;
 }
 
-footer {
-  text-align: center;
-  padding: 10px;
-  background-color: #007BFF;
-  color: white;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
-/* Login Page Styles */
-.login-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
-
-input {
+input, textarea {
   padding: 10px;
   font-size: 1rem;
-  width: 300px;
-  margin: 20px 0;
+  width: 100%;
+  margin: 10px 0;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-.login-container h1 {
-  font-size: 2rem;
-  margin-bottom: 20px;
+textarea {
+  height: 120px;
+  resize: none;
+}
+
+/* Feedback Viewer */
+#feedback-container {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+#feedback-container p {
+  margin: 0 0 10px;
+  padding: 10px;
+  background-color: #e9ecef;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+/* Broadcast Message Section */
+textarea#broadcast-message {
+  width: calc(100% - 20px);
+}
+
+/* Theme Customizer */
+input[type="color"] {
+  border: none;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  margin-left: 10px;
+}
+
+/* Visitor Analytics */
+#visit-count {
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  section {
+    width: 95%;
+  }
+
+  input, textarea {
+    width: 100%;
+  }
+
+  textarea#broadcast-message {
+    width: calc(100% - 20px);
+  }
 }
