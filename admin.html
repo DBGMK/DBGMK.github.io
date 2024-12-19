@@ -14,8 +14,36 @@
   <main>
     <section>
       <h2>Admin Controls</h2>
-      <p>This section is only accessible to the admin.</p>
       <button onclick="logout()">Logout</button>
+    </section>
+
+    <!-- Feedback Viewer -->
+    <section>
+      <h3>User Feedback</h3>
+      <div id="feedback-container">
+        <p>No feedback available.</p>
+      </div>
+    </section>
+
+    <!-- Message Broadcasting -->
+    <section>
+      <h3>Broadcast a Message</h3>
+      <textarea id="broadcast-message" placeholder="Type your announcement here"></textarea>
+      <button onclick="sendBroadcast()">Send Broadcast</button>
+    </section>
+
+    <!-- Theme Customizer -->
+    <section>
+      <h3>Change Theme</h3>
+      <label for="theme-color">Select Theme Color:</label>
+      <input type="color" id="theme-color" value="#007BFF">
+      <button onclick="updateTheme()">Apply Theme</button>
+    </section>
+
+    <!-- Analytics -->
+    <section>
+      <h3>Visitor Analytics</h3>
+      <p>Total Visits: <span id="visit-count">0</span></p>
     </section>
   </main>
 
@@ -24,16 +52,55 @@
   </footer>
 
   <script>
-    // Check if user has accessed the admin page without logging in
+    // Check if the user is logged in
     if (sessionStorage.getItem('admin_logged_in') !== 'true') {
-      window.location.href = "admin-login.html"; // Redirect to login if not logged in
+      window.location.href = "admin-login.html";
     }
 
-    // Logout function to clear session and redirect to login page
+    // Logout functionality
     function logout() {
       sessionStorage.removeItem('admin_logged_in');
-      window.location.href = "admin-login.html"; // Redirect to login page after logout
+      window.location.href = "admin-login.html";
     }
+
+    // Feedback Viewer
+    const feedbackContainer = document.getElementById('feedback-container');
+    const feedbackMessages = JSON.parse(localStorage.getItem('feedback')) || [];
+
+    function loadFeedback() {
+      if (feedbackMessages.length > 0) {
+        feedbackContainer.innerHTML = feedbackMessages
+          .map(msg => `<p>${msg}</p>`)
+          .join('');
+      } else {
+        feedbackContainer.innerHTML = "<p>No feedback available.</p>";
+      }
+    }
+
+    // Broadcast Message
+    function sendBroadcast() {
+      const message = document.getElementById('broadcast-message').value;
+      if (message.trim() !== '') {
+        alert(`Broadcast sent: ${message}`);
+        document.getElementById('broadcast-message').value = '';
+      } else {
+        alert('Message cannot be empty.');
+      }
+    }
+
+    // Theme Customizer
+    function updateTheme() {
+      const color = document.getElementById('theme-color').value;
+      localStorage.setItem('themeColor', color); // Save the theme to local storage
+      alert(`Theme updated to ${color}!`);
+    }
+
+    // Load visitor analytics
+    const visitCount = localStorage.getItem('visitCount') || 0;
+    document.getElementById('visit-count').innerText = visitCount;
+
+    // Load feedback on page load
+    loadFeedback();
   </script>
 </body>
 </html>
