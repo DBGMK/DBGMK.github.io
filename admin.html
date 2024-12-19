@@ -77,7 +77,22 @@
         feedbackContainer.innerHTML = "<p>No feedback available.</p>";
       }
     }
-
+function clearAllMessages() {
+  // Confirm the action
+  if (confirm("Are you sure you want to clear all messages? This action cannot be undone.")) {
+    // Locate the feedback container
+    const feedbackContainer = document.getElementById('feedback-container');
+    
+    // Clear the localStorage key (if used to store messages)
+    localStorage.removeItem('feedback');
+    
+    // Remove all messages from the UI
+    feedbackContainer.innerHTML = "<p>No feedback available.</p>";
+    
+    // Notify the admin
+    alert("All messages have been cleared!");
+  }
+}
     // Broadcast Message
     function sendBroadcast() {
       const message = document.getElementById('broadcast-message').value;
