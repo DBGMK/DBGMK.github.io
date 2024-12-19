@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Chat</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">
+      <h3>Admin Panel</h3>
+    </div>
+    <div id="chat-box" class="chat-box"></div>
+    <div class="chat-input-container">
+      <input id="chat-input" type="text" placeholder="Reply to user..." />
+      <button id="send-btn">Send</button>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
