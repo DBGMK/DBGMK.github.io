@@ -1,46 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DBGMK Marketing</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header>
-    <h1>Welcome to DBGMK Marketing</h1>
-    <button id="toggle-theme">Toggle Light/Dark Mode</button>
-  </header>
-  
-  <main>
-    <section class="intro">
-      <h2>Empowering Your Business</h2>
-      <p>We provide top-tier marketing solutions to elevate your brand and grow your business.</p>
-    </section>
+<!-- Feedback Form -->
+<section>
+  <h2>Leave Feedback</h2>
+  <textarea id="feedback-input" placeholder="Your feedback here"></textarea>
+  <button onclick="submitFeedback()">Submit Feedback</button>
+</section>
 
-    <section class="features">
-      <h2>Our Services</h2>
-      <div class="feature">
-        <h3>Brand Strategy</h3>
-        <p>We craft strategies that resonate with your audience.</p>
-      </div>
-      <div class="feature">
-        <h3>Social Media Management</h3>
-        <p>Connecting you with your customers through innovative social campaigns.</p>
-      </div>
-      <div class="feature">
-        <h3>Data-Driven Insights</h3>
-        <p>Turn numbers into actionable strategies for your success.</p>
-      </div>
-    </section>
-  </main>
-  
-  <footer>
-    <p>&copy; 2024 DBGMK Marketing. All rights reserved.</p>
-  </footer>
+<script>
+  // Feedback Submission
+  function submitFeedback() {
+    const feedbackInput = document.getElementById('feedback-input');
+    const feedback = feedbackInput.value.trim();
 
-  <canvas id="background"></canvas>
+    if (feedback) {
+      const existingFeedback = JSON.parse(localStorage.getItem('feedback')) || [];
+      existingFeedback.push(feedback);
+      localStorage.setItem('feedback', JSON.stringify(existingFeedback));
+      alert('Feedback submitted! Thank you.');
+      feedbackInput.value = '';
+    } else {
+      alert('Feedback cannot be empty.');
+    }
+  }
 
-  <script src="animations.js"></script>
-</body>
-</html>
+  // Visitor Analytics
+  let visitCount = localStorage.getItem('visitCount') || 0;
+  visitCount++;
+  localStorage.setItem('visitCount', visitCount);
+
+  // Apply Admin Theme
+  const themeColor = localStorage.getItem('themeColor');
+  if (themeColor) {
+    document.body.style.backgroundColor = themeColor;
+  }
+</script>
