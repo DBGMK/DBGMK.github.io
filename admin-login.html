@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Login</title>
-  <link rel="stylesheet" href="admsty.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="login-container">
@@ -21,8 +21,9 @@
     loginBtn.addEventListener('click', () => {
       const enteredPassword = passwordInput.value;
       if (enteredPassword === correctPassword) {
-        // If password is correct, redirect to the admin page
-        window.location.href = "admin.html";
+        // If password is correct, set the sessionStorage and redirect to admin page
+        sessionStorage.setItem('admin_logged_in', 'true');
+        window.location.href = "admin.html"; // Redirect to admin page
       } else {
         // If password is incorrect, show an alert
         alert("Incorrect password. Please try again.");
@@ -31,3 +32,4 @@
   </script>
 </body>
 </html>
+
