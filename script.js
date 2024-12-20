@@ -9,22 +9,38 @@ toggleTheme.addEventListener('click', () => {
   isDarkMode = !isDarkMode;
 });
 
-document.getElementById('partnership-form').addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevent the default form submission behavior
+// Handle partnership form submission
+document.addEventListener("DOMContentLoaded", function () {
+  const partnershipForm = document.querySelector("#partnership-form");
 
-  // Get form values
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const company = document.getElementById('company').value;
-  const message = document.getElementById('message').value;
+  if (partnershipForm) {
+    partnershipForm.addEventListener("submit", function (e) {
+      e.preventDefault();
 
-  // Simulate form submission (this is where you'd integrate with a backend)
-  console.log(`Partnership Application Submitted:
-    Name: ${name}
-    Email: ${email}
-    Company: ${company}
-    Message: ${message}
-  `);
+      // Get form data
+      const name = document.querySelector("#name").value;
+      const email = document.querySelector("#email").value;
+      const message = document.querySelector("#message").value;
+
+      // Retrieve existing applications from Local Storage
+      const existingApplications = JSON.parse(localStorage.getItem("partnershipApplications")) || [];
+
+      // Add new application
+      const newApplication = { name, email, message, date: new Date().toISOString() };
+      existingApplications.push(newApplication);
+
+      // Save back to Local Storage
+      localStorage.setItem("partnershipApplications", JSON.stringify(existingApplications));
+
+      // Clear the form
+      partnershipForm.reset();
+
+      // Display confirmation
+      const responseMessage = document.querySelector("#form-response");
+      responseMessage.textContent = "Thank you for applying for a partnership! We will get back to you soon.";
+    });
+  }
+});
 
   // Show a success message
   const responseElement = document.getElementById('form-response');
