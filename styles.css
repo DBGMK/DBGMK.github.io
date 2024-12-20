@@ -3,8 +3,10 @@ body {
   font-family: 'Arial', sans-serif;
   color: #ffffff;
   background: linear-gradient(to right, #007BFF, #0047AB);
-  overflow: hidden;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  overflow-y: auto; /* Allow vertical scrolling */
 }
+
 
 header {
   text-align: center;
@@ -36,9 +38,11 @@ button:hover {
 }
 
 main {
-  text-align: center;
   padding: 50px 20px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
+
 
 h2 {
   font-size: 2rem;
@@ -74,9 +78,10 @@ canvas {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: -1; /* Ensure canvas stays behind */
   width: 100vw;
   height: 100vh;
+  pointer-events: none; /* Prevent canvas from blocking user interactions */
 }
 
 
