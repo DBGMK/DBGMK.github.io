@@ -52,7 +52,42 @@
     <p>&copy; 2024 DBGMK Marketing</p>
   </footer>
 
+  <section id="partnership-applications">
+  <h2>Partnership Applications</h2>
+  <div id="applications-container">
+    <p>No applications available.</p>
+  </div>
+</section>
+  
   <script>
+    
+// Display partnership applications on the admin page
+document.addEventListener("DOMContentLoaded", function () {
+  const applicationsContainer = document.querySelector("#applications-container");
+
+  // Retrieve applications from Local Storage
+  const applications = JSON.parse(localStorage.getItem("partnershipApplications")) || [];
+
+  if (applications.length > 0) {
+    applicationsContainer.innerHTML = ""; // Clear the default message
+
+    applications.forEach((application, index) => {
+      const applicationElement = document.createElement("div");
+      applicationElement.classList.add("application");
+
+      applicationElement.innerHTML = `
+        <h3>Application ${index + 1}</h3>
+        <p><strong>Name:</strong> ${application.name}</p>
+        <p><strong>Email:</strong> ${application.email}</p>
+        <p><strong>Message:</strong> ${application.message}</p>
+        <p><strong>Date:</strong> ${new Date(application.date).toLocaleString()}</p>
+      `;
+
+      applicationsContainer.appendChild(applicationElement);
+    });
+  }
+});
+    
     // Check if the user is logged in
     if (sessionStorage.getItem('admin_logged_in') !== 'true') {
       window.location.href = "admin-login.html";
@@ -118,5 +153,6 @@ function clearAllMessages() {
     // Load feedback on page load
     loadFeedback();
   </script>
+  
 </body>
 </html>
