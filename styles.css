@@ -3,6 +3,8 @@ body {
   font-family: 'Arial', sans-serif;
   color: #ffffff;
   background: linear-gradient(to right, #007BFF, #0047AB);
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 
