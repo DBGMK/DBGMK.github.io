@@ -79,6 +79,70 @@ canvas {
   height: 100vh;
 }
 
+
+.partnership {
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  padding: 30px;
+  margin: 20px;
+  color: #00D9FF;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.partnership h2 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #00D9FF;
+  border-radius: 5px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #FFD700;
+}
+
+button {
+  background: #00D9FF;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.3s, background 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+  background: #0056b3;
+}
+
+#form-response {
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #FFD700;
+}
+
+
 /* Animations */
 @keyframes fadeIn {
   from {
