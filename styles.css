@@ -4,7 +4,7 @@ body {
   color: #ffffff;
   background: linear-gradient(to right, #007BFF, #0047AB);
   overflow-x: hidden; /* Prevent horizontal overflow */
-  overflow-y: auto; /* Allow vertical scrolling */
+  overflow-y: hidden; /* Allow vertical scrolling */
 }
 
 
