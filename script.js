@@ -9,6 +9,34 @@ toggleTheme.addEventListener('click', () => {
   isDarkMode = !isDarkMode;
 });
 
+document.getElementById('partnership-form').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the default form submission behavior
+
+  // Get form values
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const company = document.getElementById('company').value;
+  const message = document.getElementById('message').value;
+
+  // Simulate form submission (this is where you'd integrate with a backend)
+  console.log(`Partnership Application Submitted:
+    Name: ${name}
+    Email: ${email}
+    Company: ${company}
+    Message: ${message}
+  `);
+
+  // Show a success message
+  const responseElement = document.getElementById('form-response');
+  responseElement.style.display = 'block';
+  responseElement.textContent = 'Thank you for applying! We will get back to you soon.';
+  
+  // Clear the form
+  document.getElementById('partnership-form').reset();
+});
+
+
+
 // Clear
 function clearAllMessages() {
   if (confirm("Are you sure you want to clear all messages? This action cannot be undone.")) {
