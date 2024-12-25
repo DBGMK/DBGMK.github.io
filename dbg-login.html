@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DBG Login</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="login-container">
+    <h1>DBG Login</h1>
+    <input type="password" id="password" placeholder="Enter Password" />
+    <button id="login-btn">Login</button>
+  </div>
+
+  <script>
+    const correctPassword = "invalid16"; // The correct password
+    const loginBtn = document.getElementById('login-btn');
+    const passwordInput = document.getElementById('password');
+
+    loginBtn.addEventListener('click', () => {
+      const enteredPassword = passwordInput.value;
+      if (enteredPassword === correctPassword) {
+        // If password is correct, set the sessionStorage and redirect to admin page
+        sessionStorage.setItem('admin_logged_in', 'true');
+        window.location.href = "dbg-download"; // Redirect to admin page
+      } else {
+        // If password is incorrect, show an alert
+        alert("Incorrect password. Please try again.");
+      }
+    });
+  </script>
+</body>
+</html>
