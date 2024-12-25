@@ -17,5 +17,12 @@
     <footer>
         <p>&copy; 2024 DBGMK. All rights reserved.</p>
     </footer>
+
+    <script> 
+    // Check if the user is logged in
+    if (sessionStorage.getItem('admin_logged_in') !== 'true') {
+      window.location.href = "admin-login.html";
+    }
+    </script>
 </body>
 </html>
